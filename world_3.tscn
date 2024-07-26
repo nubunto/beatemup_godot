@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://cd3r6x5vrh58o"]
+
+[ext_resource type="PackedScene" uid="uid://xmj6w45cxwt6" path="res://fighter3d.tscn" id="1_8yexl"]
+[ext_resource type="Texture2D" uid="uid://snpceibh7s8o" path="res://Assets/Prototype_Grid_Gray_10-128x128.png" id="2_an4kd"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wn05h"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_5jhr2"]
+sky_material = SubResource("ProceduralSkyMaterial_wn05h")
+
+[sub_resource type="Environment" id="Environment_b2wvq"]
+background_mode = 2
+sky = SubResource("Sky_5jhr2")
+tonemap_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_376x1"]
+albedo_texture = ExtResource("2_an4kd")
+
+[node name="World3" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_b2wvq")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+use_collision = true
+size = Vector3(10, 1, 10)
+material = SubResource("StandardMaterial3D_376x1")
+
+[node name="Fighter" parent="." instance=ExtResource("1_8yexl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.823225, 0)
+
+[node name="Pivot" type="Node3D" parent="Fighter"]
+transform = Transform3D(1, 0, 0, 0, 0.955216, 0.295908, 0, -0.295908, 0.955216, 0.0855533, 0.485042, 0.952095)
+
+[node name="Camera3D" type="Camera3D" parent="Fighter/Pivot"]

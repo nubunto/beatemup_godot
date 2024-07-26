@@ -1,0 +1,48 @@
+{
+	"textures": [
+		{
+			"image": "playerspritesheet.png",
+			"size": {
+				"w": 480,
+				"h": 96
+			},
+			"sprites": [
+				{
+					"filename": "Player Idle 48x48.png",
+					"region": {
+						"x": 0,
+						"y": 0,
+						"w": 480,
+						"h": 48
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "player run 48x48.png",
+					"region": {
+						"x": 0,
+						"y": 48,
+						"w": 384,
+						"h": 48
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:d5037e48c810e9c8f26013c8b339a2a2:b26af80194ec8fda9a08f71fc084c6cb:fcb645bd45cc72ba3fe7ca8b3d9cbf29$"
+	}
+}

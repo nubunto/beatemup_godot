@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://7ipd8jk6ygbi"]
+
+[ext_resource type="Script" path="res://enemy.gd" id="1_1aw20"]
+[ext_resource type="Texture2D" uid="uid://m1sr2oivwrtj" path="res://Assets/Streets of Fight files/Spritesheets/Enemy Punk/idle.png" id="1_mm815"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5xr1f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mt4lf"]
+size = Vector2(15, 43)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g6m04"]
+size = Vector2(63, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ahnj"]
+size = Vector2(28, 58)
+
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 0
+script = ExtResource("1_1aw20")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_mm815")
+offset = Vector2(0, -32)
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_5xr1f")
+
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(1, -29)
+rotation = -1.5708
+collision_layer = 64
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-3.5, -22.5)
+shape = SubResource("RectangleShape2D_mt4lf")
+debug_color = Color(0.662203, 0.372313, 9.62615e-08, 0.42)
+
+[node name="Range" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Range"]
+position = Vector2(-1.5, 2.5)
+shape = SubResource("RectangleShape2D_g6m04")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(-2, -19)
+shape = SubResource("RectangleShape2D_3ahnj")
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="area_entered" from="Range" to="." method="_on_range_area_entered"]
