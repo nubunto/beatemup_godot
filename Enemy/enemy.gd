@@ -16,13 +16,13 @@ var knockback := Vector2.ZERO
 func _ready() -> void:
 	animation_player.play("idle", -1, randf_range(0.1, 1.0))
 
-func take_hit(knockback: Vector2):
+func take_hit(knockback_param: Vector2):
 	# apply knockback
 	state = State.Knockback
-	self.knockback = knockback
+	self.knockback = knockback_param
 	knockback_timer.start()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	match state:
 		State.Idle:
 			pass

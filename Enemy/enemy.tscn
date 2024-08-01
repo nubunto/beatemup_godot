@@ -58,38 +58,46 @@ collision_layer = 0
 script = ExtResource("1_bnjit")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
 texture = ExtResource("2_4s3c1")
 offset = Vector2(0, -32)
 hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+y_sort_enabled = true
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_5xr1f")
 
 [node name="Hitbox" type="Area2D" parent="."]
+y_sort_enabled = true
 position = Vector2(1, -29)
 rotation = -1.5708
 collision_layer = 64
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+y_sort_enabled = true
 position = Vector2(-3.5, -22.5)
 shape = SubResource("RectangleShape2D_mt4lf")
 debug_color = Color(0.662203, 0.372313, 9.62615e-08, 0.42)
 
 [node name="Range" type="Area2D" parent="."]
+y_sort_enabled = true
 collision_layer = 16
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Range"]
+y_sort_enabled = true
 position = Vector2(-1.5, 2.5)
 shape = SubResource("RectangleShape2D_g6m04")
 
 [node name="Hurtbox" type="Area2D" parent="."]
+y_sort_enabled = true
 collision_layer = 32
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+y_sort_enabled = true
 position = Vector2(-2, -19)
 shape = SubResource("RectangleShape2D_3ahnj")
 

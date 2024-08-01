@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://d0rtt82a7twn8"]
+
+[ext_resource type="Script" path="res://Fighter/Attack.gd" id="1_10gv0"]
+
+[resource]
+script = ExtResource("1_10gv0")
+startup_frames = 0
+active_frames = 0
+recovery_frames = 0
