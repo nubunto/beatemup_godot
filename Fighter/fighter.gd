@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var jump_height = -400.0
 
 @onready var animation_player = $AnimationPlayer
+@onready var collision_shape_2d = $Hitbox/CollisionShape2D
 
 var flipped := false
 
@@ -15,6 +16,8 @@ enum State {
 
 var state: State = State.Idle
 var in_range := false
+var hitbox_hit := false
+var fighter_direction := 1
 
 func _unhandled_input(event: InputEvent):
 	if event.is_action_pressed("punch"):
@@ -40,10 +43,12 @@ func _physics_process(delta):
 				if not flipped:
 					transform.x *= -1
 					flipped = true
+					fighter_direction = -1
 			elif direction.x >= 0.5:
 				if flipped:
 					transform.x *= -1
 					flipped = false
+					fighter_direction = 1
 
 			velocity.x = direction.x * move_speed
 			velocity.y = direction.y * move_speed
@@ -51,6 +56,7 @@ func _physics_process(delta):
 
 		State.Punch:
 			animation_player.play("punch")
+
 
 func set_state(new_state: State) -> void:
 	state = new_state
@@ -61,7 +67,7 @@ func _on_range_area_entered(area):
 func _on_hitbox_area_entered(area: Area2D):
 	if in_range:
 		if area.get_parent().has_method("take_hit"):
-			area.get_parent().take_hit()
+			area.get_parent().take_hit(Vector2(1, 0) * fighter_direction)
 
 func _on_range_area_exited(area):
 	in_range = false
